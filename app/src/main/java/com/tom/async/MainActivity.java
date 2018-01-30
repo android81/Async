@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,13 +14,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void go1(View view){
+    public void go1(View view) {
+        new Job1Task().execute();
+    }
+
+    public void go2(View view) {
 
     }
-    public void go2(View view){
+
+    public void go3(View view) {
 
     }
-    public void go3(View view){
 
+    class Job1Task extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            TextView info = findViewById(R.id.info);
+            info.setText("DONE");
+        }
     }
 }
