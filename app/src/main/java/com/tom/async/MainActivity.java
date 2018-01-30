@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void go2(View view) {
-
+        new Job2Task().execute(3);
     }
 
     public void go3(View view) {
@@ -37,6 +37,25 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            TextView info = findViewById(R.id.info);
+            info.setText("DONE");
+        }
+    }
+
+    class Job2Task extends AsyncTask<Integer, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            try {
+                Thread.sleep(integers[0]*1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
